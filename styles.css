@@ -185,7 +185,8 @@ p{max-width:64ch}
 .signature__body .eyebrow{color:var(--gold)}
 .signature h2{font-size:clamp(2.4rem,9vw,4.2rem)}
 .signature__price{font-family:var(--serif);font-size:2rem;color:var(--gold-soft);margin:var(--s3) 0 var(--s1)}
-.signature__meta{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-mut);margin-bottom:var(--s4)}
+.signature__meta{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark-mut);margin-bottom:var(--s3)}
+.signature__policy{margin:0 0 var(--s4);font-size:.85rem;line-height:1.5;color:var(--on-dark-mut);max-width:46ch;padding-left:.9rem;border-left:2px solid var(--line-gold)}
 
 /* ---- gallery -----------------------------------------------------------*/
 .gallery{display:grid;grid-template-columns:1fr;gap:.7rem}

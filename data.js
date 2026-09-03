@@ -64,7 +64,7 @@ window.KILA = {
   brands: ["Balmain", "GHD", "Hairdreams", "Paul Mitchell", "Wella"],
 
   /* ---- Nota prezzi ---------------------------------------------------- */
-  servicesNote: "Il nostro listino. I prezzi dei servizi Kila Menù e Balmain sono da sommare tra loro. L'Hair SPA è l'unico servizio prenotabile online.",
+  servicesNote: "Il nostro listino. I prezzi dei servizi Kila Menù e Balmain sono da sommare tra loro. Tutti i servizi si prenotano su WhatsApp; la Hair SPA è l'unica con pagamento anticipato online.",
 
   /* ---- Servizi (categorie -> voci) -----------------------------------
      name, desc, duration, price. Metti price:"Su consulenza" dove il
@@ -72,9 +72,9 @@ window.KILA = {
   services: [
     {
       title: "Signature",
-      lead: "Il nostro trattamento firma — l'unico prenotabile online.",
+      lead: "Il nostro trattamento firma — l'unico con pagamento anticipato online.",
       items: [
-        { name: "Hair SPA esclusiva", desc: "Un rituale completo di detersione, trattamento e styling: il momento in cui il capello — e chi lo indossa — si rimette al centro.", duration: "1 h 20 min", price: "€ 100", featured: true, bookable: true }
+        { name: "Hair SPA esclusiva", desc: "Un rituale completo di detersione, trattamento e styling: il momento in cui il capello — e chi lo indossa — si rimette al centro.", duration: "1 h 20 min", price: "€ 100", featured: true, prepaid: true, policy: "Disdetta gratuita fino a 24 ore prima dell'appuntamento. Oltre questo termine l'importo pagato non è rimborsabile." }
       ]
     },
     {

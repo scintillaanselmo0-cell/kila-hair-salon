@@ -45,11 +45,12 @@
     var spa = null;
     K.services.forEach(function (c) { c.items.forEach(function (i) { if (i.featured) spa = i; }); });
     if (!spa) return;
-    var t = $("#sigTitle"), d = $("#sigDesc"), p = $("#sigPrice"), m = $("#sigMeta");
+    var t = $("#sigTitle"), d = $("#sigDesc"), p = $("#sigPrice"), m = $("#sigMeta"), pol = $("#sigPolicy");
     if (t) t.textContent = spa.name;
     if (d) d.textContent = spa.desc;
     if (p) p.textContent = spa.price;
     if (m) m.textContent = spa.duration;
+    if (pol && spa.policy) pol.textContent = spa.policy;
   })();
 
   /* ---------- GALLERY ---------- */
@@ -235,17 +236,15 @@
       // popola select servizi
       var sel = $("#fServizio");
       if (sel && !sel.dataset.filled) {
-        var n = 0;
         K.services.forEach(function (cat) {
+          var og = el("optgroup"); og.label = cat.title;
           cat.items.forEach(function (it) {
-            if (!it.bookable) return;           // solo servizi prenotabili online
             var o = el("option"); o.value = it.name;
-            o.textContent = it.name + (it.price && it.price.indexOf("€") === 0 ? " — " + it.price : "");
-            sel.appendChild(o); n++;
+            o.textContent = it.name + (it.price && it.price.indexOf("€") !== -1 ? " — " + it.price : "");
+            og.appendChild(o);
           });
+          sel.appendChild(og);
         });
-        // se c'è un solo servizio prenotabile, pre-selezionalo
-        if (n === 1) { var only = sel.querySelector("option[value]:not([value=''])"); if (only) sel.value = only.value; }
         sel.dataset.filled = "1";
       }
       // popola parrucchiere
