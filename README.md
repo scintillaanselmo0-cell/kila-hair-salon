@@ -20,8 +20,17 @@ Non serve toccare `index.html`, `styles.css` o `app.js`.
 
 ## Prenotazione
 Il pulsante **Prenota** apre un form che compone un messaggio WhatsApp già pronto
-verso il numero in `contact.whatsappNumber`. In alternativa è presente il link a
-Treatwell (`links.bookingOnline`).
+verso il numero in `contact.whatsappNumber`. L'unico servizio prenotabile online è
+quello con `bookable: true` in `data.js` (attualmente la **Hair SPA**): per renderne
+prenotabile un altro, aggiungi `bookable: true` alla sua voce. In alternativa è
+presente il link a Treatwell (`links.bookingOnline`).
+
+## Sezione Sposa (Kila Brides)
+Cliccando **Sposa** (o "Scopri il pacchetto sposa") si apre una pagina dedicata con
+il video e tutte le voci del pacchetto. Contenuti, prezzo, voci incluse, extra,
+acconto e nota si modificano nell'oggetto `bride` di `data.js`. Il video è
+`assets/bride.mp4` (con poster `assets/bride-poster.webp`) e viene caricato **solo**
+all'apertura della pagina sposa, così la home resta leggera.
 
 ## Pubblicare su GitHub Pages
 1. Crea un repository e carica tutti i file (con la cartella `assets/`).

@@ -35,6 +35,7 @@
         list.appendChild(item);
       });
       sec.appendChild(list);
+      if (cat.note) sec.appendChild(el("p", "svc-cat__note", esc(cat.note)));
       wrap.appendChild(sec);
     });
   })();
@@ -234,14 +235,17 @@
       // popola select servizi
       var sel = $("#fServizio");
       if (sel && !sel.dataset.filled) {
+        var n = 0;
         K.services.forEach(function (cat) {
-          var og = el("optgroup"); og.label = cat.title;
           cat.items.forEach(function (it) {
-            var o = el("option"); o.value = it.name; o.textContent = it.name + (it.price && it.price.indexOf("€") === 0 ? " — " + it.price : "");
-            og.appendChild(o);
+            if (!it.bookable) return;           // solo servizi prenotabili online
+            var o = el("option"); o.value = it.name;
+            o.textContent = it.name + (it.price && it.price.indexOf("€") === 0 ? " — " + it.price : "");
+            sel.appendChild(o); n++;
           });
-          sel.appendChild(og);
         });
+        // se c'è un solo servizio prenotabile, pre-selezionalo
+        if (n === 1) { var only = sel.querySelector("option[value]:not([value=''])"); if (only) sel.value = only.value; }
         sel.dataset.filled = "1";
       }
       // popola parrucchiere
@@ -310,6 +314,57 @@
       form.style.display = "none";
       confirm.classList.add("show");
     });
+  })();
+
+  /* ---------- BRIDES (sezione sposa + pagina dedicata) ---------- */
+  (function () {
+    var b = K.bride; if (!b) return;
+    var set = function (id, v) { var e = $("#" + id); if (e && v != null) e.textContent = v; };
+
+    // teaser in home
+    set("brideEye", b.eyebrow); set("brideTitle", b.title); set("brideIntro", b.intro);
+
+    // contenuto pagina sposa
+    set("brideOvEye", b.eyebrow); set("brideOvTitle", b.title); set("brideOvIntro", b.intro);
+    if (b.package) { set("bridePkgName", b.package.name); set("bridePkgPrice", b.package.price); }
+    set("brideDeposit", b.deposit); set("brideNote", b.note);
+
+    var list = $("#brideList");
+    if (list) b.includes.forEach(function (x) { list.appendChild(el("li", null, esc(x))); });
+
+    var ex = $("#brideExtra");
+    if (ex && b.extra) b.extra.forEach(function (x) {
+      var r = el("div", "bride__extraRow");
+      r.appendChild(el("span", "bride__extraName", esc(x.name)));
+      r.appendChild(el("span", "bride__extraPrice", esc(x.price)));
+      ex.appendChild(r);
+    });
+
+    var cta = $("#brideCta");
+    if (cta) {
+      cta.textContent = b.ctaLabel || "Richiedi consulenza";
+      var msg = "Ciao Kilà! Vorrei informazioni sul " + (b.package ? b.package.name : "pacchetto sposa") + " per il mio matrimonio.";
+      cta.href = "https://wa.me/" + K.contact.whatsappNumber + "?text=" + encodeURIComponent(msg);
+    }
+
+    var vid = $("#brideVideo");
+    if (vid && b.video) vid.src = b.video;   // preload="none": carica solo all'apertura
+
+    var ov = $("#bride"); if (!ov) return;
+    var openOv = function () {
+      ov.classList.add("open"); document.body.style.overflow = "hidden";
+      if (vid) { try { vid.play(); } catch (e) {} }
+    };
+    var closeOv = function () {
+      ov.classList.remove("open"); document.body.style.overflow = "";
+      if (vid) { try { vid.pause(); } catch (e) {} }
+    };
+    document.querySelectorAll("[data-bride]").forEach(function (x) {
+      x.addEventListener("click", function (e) { e.preventDefault(); openOv(); });
+    });
+    var cl = $("#brideClose"); if (cl) cl.addEventListener("click", closeOv);
+    var sc = $("#brideScrim"); if (sc) sc.addEventListener("click", closeOv);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeOv(); });
   })();
 
   /* ---------- year ---------- */

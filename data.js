@@ -64,53 +64,44 @@ window.KILA = {
   brands: ["Balmain", "GHD", "Hairdreams", "Paul Mitchell", "Wella"],
 
   /* ---- Nota prezzi ---------------------------------------------------- */
-  servicesNote: "Ogni trattamento su misura viene definito in consulenza: il prezzo varia in base a lunghezza e struttura del capello.",
+  servicesNote: "Il nostro listino. I prezzi dei servizi Kila Menù e Balmain sono da sommare tra loro. L'Hair SPA è l'unico servizio prenotabile online.",
 
   /* ---- Servizi (categorie -> voci) -----------------------------------
      name, desc, duration, price. Metti price:"Su consulenza" dove il
      prezzo dipende dal capello; usa un valore in € solo se è fisso.       */
   services: [
     {
-      title: "Consulenze",
-      lead: "Il punto di partenza di ogni servizio: cinque minuti per capire pelle, capello e desideri prima di scegliere il trattamento.",
-      items: [
-        { name: "Consulenza taglio",     desc: "Analisi del viso e della struttura per definire la forma giusta.", duration: "5 min", price: "€ 5" },
-        { name: "Consulenza colore",     desc: "Studio del riflesso e della tecnica più adatta al tuo incarnato.", duration: "5 min", price: "€ 5" },
-        { name: "Consulenza piega",      desc: "La messa in piega pensata per il tuo capello e le tue giornate.",  duration: "5 min", price: "€ 5" },
-        { name: "Consulenza extension",  desc: "Valutazione di volume e lunghezza con sistemi Hairdreams e Balmain.", duration: "5 min", price: "€ 5" }
-      ]
-    },
-    {
       title: "Signature",
-      lead: "Il nostro trattamento firma.",
+      lead: "Il nostro trattamento firma — l'unico prenotabile online.",
       items: [
-        { name: "Hair SPA esclusiva", desc: "Un rituale completo di detersione, trattamento e styling: il momento in cui il capello — e chi lo indossa — si rimette al centro.", duration: "1 h 20 min", price: "€ 120", featured: true }
+        { name: "Hair SPA esclusiva", desc: "Un rituale completo di detersione, trattamento e styling: il momento in cui il capello — e chi lo indossa — si rimette al centro.", duration: "1 h 20 min", price: "€ 100", featured: true, bookable: true }
       ]
     },
     {
-      title: "Taglio & Piega",
-      lead: "Tagli su misura e styling curato, con finish GHD.",
+      title: "Kila Menù",
+      lead: "I nostri servizi in salone, con sistema Wella.",
+      note: "Tutti i prezzi sono da sommare tra loro.",
       items: [
-        { name: "Taglio donna",         desc: "Forma e movimento disegnati sul tuo viso.",            duration: "su misura", price: "Su consulenza" },
-        { name: "Piega & styling",      desc: "Dalla piega naturale all'acconciatura da sera.",       duration: "su misura", price: "Su consulenza" },
-        { name: "Acconciature evento",  desc: "Sposa e cerimonia, con prova dedicata.",               duration: "su misura", price: "Su consulenza" }
+        { name: "Piega",             price: "€ 15" },
+        { name: "Taglio",            price: "€ 16" },
+        { name: "Colore Wella base", price: "€ 32" },
+        { name: "Toner",             price: "€ 13" },
+        { name: "Sfumature",         price: "a partire da € 80" },
+        { name: "Ricostruzione",     price: "€ 60" },
+        { name: "Laminazione",       price: "€ 30" }
       ]
     },
     {
-      title: "Colore",
-      lead: "Colore e luce con sistema Wella: dal ritocco naturale alle schiariture su misura.",
+      title: "Balmain Hair Services",
+      lead: "La linea premium Balmain Hair Couture.",
+      note: "Tutti i prezzi sono da sommare tra loro.",
       items: [
-        { name: "Colore",               desc: "Copertura e riflesso costruiti sul tuo incarnato.",    duration: "su misura", price: "Su consulenza" },
-        { name: "Schiariture & meches", desc: "Balayage, meches e giochi di luce graduali.",          duration: "su misura", price: "Su consulenza" },
-        { name: "Trattamenti capillari",desc: "Cura e ricostruzione per capelli sani e luminosi.",    duration: "su misura", price: "Su consulenza" }
-      ]
-    },
-    {
-      title: "Extension",
-      lead: "Volume e lunghezza con i sistemi premium Hairdreams e Balmain Hair Couture.",
-      items: [
-        { name: "Extension",            desc: "Applicazione naturale, invisibile e su misura.",       duration: "su misura", price: "Su consulenza" },
-        { name: "Manutenzione extension",desc: "Controllo, spostamento e cura nel tempo.",            duration: "su misura", price: "Su consulenza" }
+        { name: "Piega Balmain",         price: "€ 30" },
+        { name: "Colore Balmain base",   price: "€ 45" },
+        { name: "Toner Balmain",         price: "€ 21" },
+        { name: "Sfumature Balmain",     price: "a partire da € 80" },
+        { name: "Rituel",                price: "€ 100" },
+        { name: "Nanoplastia",           price: "€ 4 al grammo" }
       ]
     }
   ],
@@ -124,7 +115,6 @@ window.KILA = {
     { name: "Bianca",   role: "Hair Stylist", specialty: "Taglio & piega",           photo: "" },
     { name: "Cleo",     role: "Hair Stylist", specialty: "Styling & acconciature",   photo: "" },
     { name: "Alessio",  role: "Hair Stylist", specialty: "Taglio",                   photo: "" },
-    { name: "Barbara",  role: "Hair Stylist", specialty: "Hair SPA & trattamenti",   photo: "" },
     { name: "Emanuela", role: "Hair Stylist", specialty: "Extension",                photo: "" }
   ],
 
@@ -154,5 +144,30 @@ window.KILA = {
     "Wi-Fi gratuito", "Bevande analcoliche offerte", "Aria condizionata",
     "Accessibile in sedia a rotelle", "Animali ammessi", "Bambini benvenuti",
     "LGBTQIA+ friendly", "Parcheggio disponibile", "Italiano & English"
-  ]
+  ],
+
+  /* ---- Kila Brides (sezione sposa dedicata, con video) ---------------
+     Il video e il poster stanno in assets/. Il pacchetto e le voci
+     incluse sono modificabili qui.                                       */
+  bride: {
+    eyebrow: "Kila Brides",
+    title: "Il giorno più importante, dalla prova al velo.",
+    intro: "Un percorso su misura che accompagna la sposa dalla prima prova fino al mattino delle nozze — con la stessa cura, in ogni dettaglio.",
+    video: "assets/bride.mp4",
+    poster: "assets/bride-poster.webp",
+    package: { name: "Pacchetto Sposa", price: "€ 500" },
+    includes: [
+      "Prove",
+      "Acconciatura",
+      "Trattamento di ricostruzione un mese prima",
+      "Prove + acconciatura mamma sposa",
+      "Shampoo + trattamento la sera prima (sposa)"
+    ],
+    extra: [
+      { name: "Cambio sposa", price: "a partire da € 200" }
+    ],
+    deposit: "Acconto del 10% per confermare la data.",
+    note: "In fase di consulenza verranno valutati eventuali costi e servizi non riportati da listino.",
+    ctaLabel: "Richiedi la consulenza sposa"
+  }
 };

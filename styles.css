@@ -341,3 +341,79 @@ p{max-width:64ch}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* =========================================================================
+   NOTA DI CATEGORIA (listino: "prezzi da sommare")
+   ========================================================================= */
+.svc-cat__note{margin-top:var(--s3);font-family:var(--serif);font-style:italic;
+  font-size:1.02rem;color:var(--gold-deep)}
+
+/* =========================================================================
+   SPOSA — teaser full-bleed
+   ========================================================================= */
+.brides-teaser{position:relative;isolation:isolate;overflow:hidden;
+  min-height:78vh;display:flex;align-items:flex-end;
+  padding-block:clamp(3rem,10vw,6rem);background:var(--ink)}
+.brides-teaser__bg{position:absolute;inset:0;z-index:-2;
+  background-size:cover;background-position:center;transform:scale(1.05);filter:saturate(.9)}
+.brides-teaser__scrim{position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(6,6,8,.55) 0%,rgba(6,6,8,.35) 40%,rgba(6,6,8,.9) 100%)}
+.brides-teaser__inner{max-width:var(--maxw);margin-inline:auto;width:100%;padding-inline:var(--pad)}
+.brides-teaser__inner .eyebrow{color:var(--gold-soft)}
+.brides-teaser__inner h2{font-family:var(--serif);color:var(--on-dark);
+  font-size:clamp(2.1rem,8vw,3.6rem);font-weight:500;line-height:1.05;margin-top:.4rem;max-width:16ch}
+.brides-teaser__inner .lead{color:var(--on-dark-mut);max-width:46ch;margin-top:var(--s3)}
+.brides-teaser__inner .btn{margin-top:var(--s4)}
+
+/* =========================================================================
+   SPOSA — pagina dedicata (overlay con video)
+   ========================================================================= */
+.bride{position:fixed;inset:0;z-index:90;display:none;align-items:stretch;justify-content:center}
+.bride.open{display:flex}
+.bride__scrim{position:absolute;inset:0;background:rgba(4,4,5,.8);backdrop-filter:blur(4px)}
+.bride__panel{position:relative;width:100%;max-width:1000px;max-height:100vh;overflow:auto;
+  background:var(--ink-2);display:flex;flex-direction:column;
+  transform:translateY(2%);opacity:0;transition:transform .5s cubic-bezier(.6,0,.2,1),opacity .5s}
+.bride.open .bride__panel{transform:none;opacity:1}
+.bride__media{position:relative;height:38vh;min-height:220px;overflow:hidden;background:var(--ink-3)}
+.bride__media video{width:100%;height:100%;object-fit:cover}
+.bride__mediaScrim{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,6,8,.15),rgba(18,18,22,.85))}
+.bride__mediaMark{position:absolute;left:clamp(1.25rem,5vw,2.4rem);bottom:1rem;
+  font-family:var(--serif);font-size:2rem;line-height:1;color:var(--on-dark);letter-spacing:.02em}
+.bride__mediaMark span{display:block;font-family:var(--sans);font-weight:300;
+  font-size:.7rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-soft);margin-top:.3rem}
+.bride__content{position:relative;padding:clamp(1.6rem,6vw,3rem)}
+.bride__close{position:absolute;top:1rem;right:1rem;width:40px;height:40px;font-size:1.4rem;
+  color:var(--on-dark);background:rgba(0,0,0,.35);border-radius:50%;z-index:2}
+.bride__content .eyebrow{color:var(--gold)}
+.bride__content h2{font-family:var(--serif);color:var(--on-dark);font-weight:500;
+  font-size:clamp(1.9rem,6vw,2.8rem);line-height:1.08;margin-top:.4rem;max-width:18ch}
+.bride__intro{color:var(--on-dark-mut);margin-top:var(--s3);max-width:54ch}
+.bride__package{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  margin-top:var(--s4);padding:1.1rem 1.3rem;border:1px solid var(--line-gold);border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(201,169,106,.08),transparent)}
+.bride__pkgName{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--on-dark)}
+.bride__pkgPrice{font-family:var(--serif);font-size:1.9rem;font-weight:600;color:var(--gold-soft);white-space:nowrap}
+.bride__h3{font-family:var(--sans);font-weight:400;font-size:.74rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);margin-top:var(--s4)}
+.bride__list{margin-top:var(--s2);display:grid;gap:.85rem}
+.bride__list li{position:relative;padding-left:1.7rem;color:var(--on-dark);line-height:1.5}
+.bride__list li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;
+  border-right:1.5px solid var(--gold);border-bottom:1.5px solid var(--gold);transform:rotate(45deg)}
+.bride__extra{margin-top:var(--s4);display:grid;gap:.6rem}
+.bride__extraRow{display:flex;justify-content:space-between;gap:1rem;
+  padding-bottom:.6rem;border-bottom:1px solid var(--line-dark)}
+.bride__extraName{font-family:var(--serif);font-size:1.15rem;color:var(--on-dark)}
+.bride__extraPrice{color:var(--gold-deep);white-space:nowrap}
+.bride__deposit{margin-top:var(--s4);font-family:var(--serif);font-style:italic;
+  font-size:1.1rem;color:var(--gold-soft)}
+.bride__note{margin-top:var(--s2);font-size:.86rem;color:var(--on-dark-mut);line-height:1.55}
+.bride__content .btn{margin-top:var(--s4)}
+
+@media (min-width:820px){
+  .bride__panel{max-height:92vh;border-radius:16px;border:1px solid var(--line-gold);
+    flex-direction:row;transform:translateY(4%) scale(.99)}
+  .bride__media{height:auto;width:42%;min-height:0}
+  .bride__content{width:58%;overflow:auto}
+}
