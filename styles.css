@@ -295,6 +295,7 @@ p{max-width:64ch}
   background-position:calc(100% - 20px) 1.35em,calc(100% - 14px) 1.35em;background-size:6px 6px,6px 6px;background-repeat:no-repeat}
 .field__err{color:#e08b7d;font-size:.82rem;margin-top:.4rem;display:none}
 .field.invalid input,.field.invalid select{border-color:#c56a5c}
+.field select:disabled{opacity:1;color:var(--on-dark);cursor:default;background-image:none;border-color:var(--line-gold)}
 .field.invalid .field__err{display:block}
 .modal__note{font-size:.82rem;color:var(--on-dark-mut);line-height:1.5;margin-top:var(--s2)}
 .modal__alt{margin-top:var(--s3);text-align:center;font-size:.9rem;color:var(--on-dark-mut)}
