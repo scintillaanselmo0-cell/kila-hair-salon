@@ -232,7 +232,9 @@
   (function () {
     var modal = $("#modal"); if (!modal) return;
     var card = $("#modalCard"), form = $("#bookForm"), confirm = $("#confirm");
-    var open = function () {
+    var spaMode = false;
+    var open = function (isSpa) {
+      spaMode = !!isSpa;
       // popola select servizi
       var sel = $("#fServizio");
       if (sel && !sel.dataset.filled) {
@@ -256,12 +258,26 @@
       // data minima = oggi
       var fd = $("#fData");
       if (fd) { var t = new Date(); fd.min = t.toISOString().split("T")[0]; }
+
+      // modalità: Hair SPA (servizio bloccato, nessun operatore) vs generica
+      var parrField = pp ? pp.closest(".field") : null;
+      var title = $("#modalTitle");
+      if (spaMode) {
+        if (sel) { sel.value = "Hair SPA esclusiva"; sel.disabled = true; }
+        if (parrField) parrField.style.display = "none";
+        if (title) title.textContent = "Prenota la Hair SPA";
+      } else {
+        if (sel) { sel.disabled = false; sel.value = ""; }
+        if (parrField) parrField.style.display = "";
+        if (title) title.textContent = "Prenota";
+      }
+
       confirm.classList.remove("show"); form.style.display = "";
       modal.classList.add("open"); document.body.style.overflow = "hidden";
     };
     var close = function () { modal.classList.remove("open"); document.body.style.overflow = ""; };
 
-    document.querySelectorAll("[data-book]").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); open(); }); });
+    document.querySelectorAll("[data-book]").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); open(b.hasAttribute("data-spa")); }); });
     $("#modalClose").addEventListener("click", close);
     $("#modalScrim").addEventListener("click", close);
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
@@ -306,8 +322,8 @@
         + "• Nome: " + nome + "\n"
         + "• Servizio: " + serv + "\n"
         + "• Data: " + dit + "\n"
-        + "• Orario: " + ora + "\n"
-        + "• Parrucchiere: " + (parr || "indifferente");
+        + "• Orario: " + ora;
+      if (!spaMode) msg += "\n• Parrucchiere: " + (parr || "indifferente");
       var url = "https://wa.me/" + K.contact.whatsappNumber + "?text=" + encodeURIComponent(msg);
       window.open(url, "_blank", "noopener");
       form.style.display = "none";
