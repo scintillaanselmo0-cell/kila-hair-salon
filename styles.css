@@ -298,6 +298,11 @@ p{max-width:64ch}
 .field select:disabled{opacity:1;color:var(--on-dark);cursor:default;background-image:none;border-color:var(--line-gold)}
 .field.invalid .field__err{display:block}
 .modal__note{font-size:.82rem;color:var(--on-dark-mut);line-height:1.5;margin-top:var(--s2)}
+.modal__pending{font-size:.86rem;line-height:1.55;color:var(--on-dark);
+  background:linear-gradient(180deg,rgba(201,169,106,.10),transparent);
+  border:1px solid var(--line-gold);border-radius:var(--radius);padding:.85rem 1rem;margin-bottom:var(--s3)}
+.modal__pending strong{font-weight:500;color:var(--gold-soft)}
+.confirm p strong{font-weight:500;color:var(--gold-soft)}
 .modal__alt{margin-top:var(--s3);text-align:center;font-size:.9rem;color:var(--on-dark-mut)}
 .modal__alt a{color:var(--gold-soft);border-bottom:1px solid var(--line-gold)}
 .confirm{display:none;text-align:center;padding:var(--s3) 0}
