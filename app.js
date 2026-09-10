@@ -324,6 +324,7 @@
         + "• Data: " + dit + "\n"
         + "• Orario: " + ora;
       if (!spaMode) msg += "\n• Parrucchiere: " + (parr || "indifferente");
+      msg += "\n\nResto in attesa della vostra conferma. Grazie!";
       var url = "https://wa.me/" + K.contact.whatsappNumber + "?text=" + encodeURIComponent(msg);
       window.open(url, "_blank", "noopener");
       form.style.display = "none";
