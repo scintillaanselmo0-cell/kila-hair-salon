@@ -20,6 +20,24 @@ window.KILA = {
     url: "https://kilaparrucchieri.it"
   },
 
+  /* ---- Dati legali attività (footer) ---------------------------------- */
+  legal: {
+    ragioneSociale: "Kilà Hair Salon di Del Sorbo Emiliana",
+    indirizzo: "Via dei Goti 205 — 84012 Angri (SA)",
+    codiceFiscale: "DLSMLN93P64E131E",
+    partitaIva: "09156011216",
+    pec: "kilà@pec.it"
+  },
+
+  /* ---- Credito creatore del sito (footer) ----------------------------- */
+  credit: {
+    name: "SCINTILLA.DIGITAL.WEB",
+    instagram: "https://www.instagram.com/scintilla.digital.web",
+    email: "scintillaanselmo0@gmail.com",
+    whatsapp: "https://wa.me/393762474257",
+    phoneDisplay: "376 247 4257"
+  },
+
   /* ---- Contatti ------------------------------------------------------- */
   contact: {
     addressLine: "Via dei Goti 205",
